@@ -1,0 +1,11 @@
+<?xml version="1.0" encoding="utf-8"?>
+<resources>
+    <color name="colorPrimary">#ee6002</color>
+    <color name="colorPrimaryDark">#e54304</color>
+    <color name="colorAccent">#fff2df</color>
+    <color name="mainBackground">#f1f1f1</color>
+    <color name="titleBackground">#E65100</color>
+    <color name="tiroListItem">#EFEBE9</color>
+    <color name="tiroListItemSelected">#FFCC80</color>
+    <color name="tiroListItemPressed">#FFB74D</color>
+</resources>

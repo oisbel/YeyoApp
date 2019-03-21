@@ -1,0 +1,33 @@
+<resources>
+
+    <!-- Base application theme. -->
+    <style name="AppTheme" parent="@style/Theme.AppCompat.NoActionBar">
+        <!-- Customize your theme here. -->
+        <item name="colorPrimary">@color/colorPrimary</item>
+        <item name="colorPrimaryDark">@color/colorPrimaryDark</item>
+        <item name="colorAccent">@color/colorAccent</item>
+        <item name="android:fontFamily">Helvetica Neue</item>
+    </style>
+
+    <style name="DivStyle">
+        <item name="android:background">@drawable/div_gradient</item>
+        <item name="android:layout_width">0dp</item>
+        <item name="android:layout_height">1dp</item>
+        <item name="android:layout_marginTop">2dp</item>
+        <item name="android:layout_marginRight">26dp</item>
+        <item name="android:layout_marginLeft">26dp</item>
+        <item name="android:layout_marginEnd">26dp</item>
+        <item name="android:layout_marginStart">26dp</item>
+    </style>
+
+    <style name="tiroListItemStyle">
+        <item name="android:paddingLeft">8dp</item>
+        <item name="android:paddingTop">8dp</item>
+        <item name="android:paddingRight">8dp</item>
+        <item name="android:orientation">vertical</item>
+        <item name="android:background">@drawable/list_item_tiro_selector</item>
+        <item name="android:layout_width">match_parent</item>
+        <item name="android:layout_height">wrap_content</item>
+    </style>
+
+</resources>

@@ -1,0 +1,15 @@
+<resources>
+    <string name="app_name">Yeyo</string>
+    <string name="menu_home">Principal</string>
+    <string name="menu_tools">Estadística</string>
+    <string name="menu_tiros">Tiros</string>
+    <string name="menu_plays">Jugadas</string>
+
+    <string name="last_tiros">Últimos Tiros</string>
+    <string name="pick3_pick4">Pick 3 - Pick 4</string>3
+    <string name="error_message">No se pudo actualizar. Intente mas tarde.</string>
+
+    <string name="mediodia">Mediodía</string>
+    <string name="noche">Noche</string>
+
+</resources>
