@@ -33,11 +33,19 @@
     <style name="tiroNumber">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
     <style name="tiroDate">
         <item name="android:textSize">16dp</item>
         <item name="android:textColor">@android:color/black</item>
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
+    <style name="lastTirosLabel">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
     </style>
 
 </resources>
