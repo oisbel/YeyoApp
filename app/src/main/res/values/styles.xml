@@ -20,7 +20,7 @@
         <item name="android:layout_marginStart">26dp</item>
     </style>
 
-    <style name="tiroListItemStyle">
+    <style name="tiroListItem">
         <item name="android:paddingLeft">8dp</item>
         <item name="android:paddingTop">8dp</item>
         <item name="android:paddingRight">8dp</item>
@@ -28,6 +28,16 @@
         <item name="android:background">@drawable/list_item_tiro_selector</item>
         <item name="android:layout_width">match_parent</item>
         <item name="android:layout_height">wrap_content</item>
+    </style>
+
+    <style name="tiroNumber">
+        <item name="android:textSize">20dp</item>
+        <item name="android:textColor">@android:color/black</item>
+    </style>
+
+    <style name="tiroDate">
+        <item name="android:textSize">16dp</item>
+        <item name="android:textColor">@android:color/black</item>
     </style>
 
 </resources>
