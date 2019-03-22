@@ -18,7 +18,7 @@ public class Tiro {
             id = tiroJSON.getInt("id");
             fecha = tiroJSON.getString("fecha");
             hora = tiroJSON.getString("hora");
-            this.tiro = tiroJSON.getString("tiro");
+            this.tiro = tiroJSON.getString("tiro").replace("\n","");
         }catch (JSONException e){
             e.printStackTrace();
         }

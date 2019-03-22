@@ -10,38 +10,40 @@
         android:id="@+id/occasionIV"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
+        android:contentDescription="@string/pick3_pick4"
+        app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        app:srcCompat="@drawable/ic_action_day"
-        android:contentDescription="@string/pick3_pick4"/>
+        app:srcCompat="@drawable/ic_action_day" />
 
     <TextView
         android:id="@+id/numberTV"
+        style="@style/tiroNumber"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         android:layout_marginStart="8dp"
+        android:layout_marginTop="8dp"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toTopOf="parent"
-        style="@style/tiroNumber"/>
+        app:layout_constraintBottom_toTopOf="@+id/dateTV"/>
 
     <TextView
         android:id="@+id/dateTV"
+        style="@style/tiroDate"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginEnd="8dp"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/numberTV"
-        style="@style/tiroDate"/>
+        app:layout_constraintBottom_toTopOf="@+id/divView" />
 
     <View
         android:id="@+id/divView"
         style="@style/DivStyle"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/dateTV"/>
-
+        app:layout_constraintBottom_toBottomOf="parent"/>
 
 </android.support.constraint.ConstraintLayout>

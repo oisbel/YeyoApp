@@ -85,6 +85,8 @@ public class TirosAdapter extends RecyclerView.Adapter<TirosAdapter.TiroViewHold
             if(tiro == null) return;
             if(tiro.getHora().equals("N"))
                 occasionIV.setImageResource(R.drawable.ic_action_night);
+            else
+                occasionIV.setImageResource(R.drawable.ic_action_day);
 
             numberTV.setText(String.valueOf(tiro.getTiro()));
             dateTV.setText(String.valueOf(tiro.getFecha()));
