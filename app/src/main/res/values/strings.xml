@@ -1,5 +1,6 @@
 <resources>
     <string name="app_name">Yeyo</string>
+    <string name="last_date_updated">Hoy</string>
     <string name="menu_home">Principal</string>
     <string name="menu_tools">Estadística</string>
     <string name="menu_tiros">Tiros</string>

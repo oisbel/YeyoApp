@@ -8,6 +8,12 @@
         <item name="colorAccent">@color/colorAccent</item>
     </style>
 
+    <style name="Pick3Pick4Label">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
     <style name="DivStyle">
         <item name="android:background">@drawable/div_gradient</item>
         <item name="android:layout_width">0dp</item>
@@ -44,7 +50,7 @@
     <style name="lastTirosLabel">
         <item name="android:textSize">20dp</item>
         <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
 </resources>

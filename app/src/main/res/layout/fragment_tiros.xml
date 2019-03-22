@@ -18,14 +18,14 @@
         android:background="@color/colorPrimaryDark">
 
         <ImageButton
-            android:id="@+id/chatButton"
+            android:id="@+id/searchButton"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:background="?android:selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/ic_action_chat" />
+            app:srcCompat="@drawable/ic_action_search" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -34,16 +34,6 @@
             android:gravity="center_horizontal"
             android:text="@string/last_tiros"
             style="@style/lastTirosLabel"/>
-
-        <ImageButton
-            android:id="@+id/logoutButton"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_alignParentRight="true"
-            android:layout_marginRight="8dp"
-            android:layout_marginTop="8dp"
-            android:background="?android:selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/ic_action_logout" />
 
     </RelativeLayout>
 
@@ -64,6 +54,7 @@
         android:textColor="@android:color/white"
         android:layout_marginTop="8dp"
         android:layout_marginBottom="8dp"
+        style="@style/Pick3Pick4Label"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintTop_toBottomOf="@+id/topMenu"
