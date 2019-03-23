@@ -53,4 +53,34 @@
         <item name="android:fontFamily">sans-serif-light</item>
     </style>
 
+    <style name="lastDateUpdated">
+        <item name="android:textSize">18dp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
+    <style name="yeyoSplash">
+        <item name="android:textSize">42sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-smallcaps</item>
+    </style>
+
+    <style name="lottoSplash">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="loginLabel">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="registerLabel">
+        <item name="android:textSize">16sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
 </resources>

@@ -32,7 +32,7 @@
             android:layout_centerInParent="true"
             android:gravity="center_horizontal"
             android:text="@string/last_date_updated"
-            style="@style/lastTirosLabel"/>
+            style="@style/lastDateUpdated"/>
 
         <ImageButton
             android:id="@+id/logoutButton"
