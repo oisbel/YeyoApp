@@ -12,20 +12,21 @@
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:layout_alignParentTop="true"
-        android:layout_margin="8dp">
+        android:gravity="center"
+        android:layout_margin="12dp">
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/yeyo"
             style="@style/yeyoSplash"
-            android:textSize="32dp"/>
+            android:textSize="32sp"/>
 
         <TextView
             style="@style/lottoSplash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:text="@string/lotto"
-            android:textSize="14dp" />
+            android:textSize="14sp" />
     </LinearLayout>
 
     <TextView

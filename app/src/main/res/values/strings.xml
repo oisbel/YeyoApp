@@ -2,8 +2,8 @@
     <string name="app_name">Yeyo</string>
     <string name="yeyo">YEYO</string>
     <string name="lotto">LOTTO</string>
-    <string name="loginLabel">ENTRAR</string>
     <string name="registerLabel">CREAR CUENTA</string>
+    <string name="loginLabel">INICIAR SESIÓN</string>
     <string name="last_date_updated">Hoy</string>
     <string name="menu_home">Principal</string>
     <string name="menu_tools">Estadística</string>

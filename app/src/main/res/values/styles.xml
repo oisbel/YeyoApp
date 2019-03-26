@@ -109,4 +109,10 @@
         <item name="android:ems">10</item>
     </style>
 
+    <style name="loginButton">
+        <item name="android:textSize">18sp</item>
+        <item name="android:textColor">@color/colorForegroundRegister</item>
+        <item name="android:fontFamily">sans-serif-light</item>
+    </style>
+
 </resources>
