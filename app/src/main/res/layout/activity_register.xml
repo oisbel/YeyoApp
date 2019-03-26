@@ -1,0 +1,109 @@
+<?xml version="1.0" encoding="utf-8"?>
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    android:layout_width="match_parent"
+    android:layout_height="match_parent"
+    android:orientation="vertical"
+    tools:context=".RegisterActivity">
+
+    <LinearLayout
+        android:id="@+id/topLinearLayout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentTop="true"
+        android:layout_margin="8dp">
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/yeyo"
+            style="@style/yeyoSplash"
+            android:textSize="32dp"/>
+
+        <TextView
+            style="@style/lottoSplash"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:text="@string/lotto"
+            android:textSize="14dp" />
+    </LinearLayout>
+
+    <TextView
+        android:id="@+id/creaCuentaLabelTextView"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_below="@+id/topLinearLayout"
+        android:text="@string/registerLabel"
+        style="@style/registerLabel" />
+
+    <View
+        android:id="@+id/divView"
+        android:layout_width="match_parent"
+        style="@style/divRegister"
+        android:layout_below="@+id/creaCuentaLabelTextView"/>
+
+    <android.support.design.widget.TextInputLayout
+        android:id="@+id/nombreTI"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/divView"
+        android:layout_marginTop="12dp"
+        style="@style/registerFields">
+        <EditText
+            android:id="@+id/nombreEditText"
+            style="@style/registerFields"
+            android:textColor="@android:color/white"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="16dp"
+            android:ems="10"
+            android:gravity="center"
+            android:inputType="textPersonName"
+            android:hint="@string/name" />
+    </android.support.design.widget.TextInputLayout>
+
+    <EditText
+        android:id="@+id/emailEditText"
+        style="@style/loginFields"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_below="@+id/nombreTI"
+        android:layout_centerHorizontal="true"
+        android:layout_marginTop="16dp"
+        android:drawableLeft="@drawable/ic_action_user"
+        android:hint="@string/email"
+        android:inputType="textEmailAddress" />
+
+    <EditText
+        android:id="@+id/passwordET"
+        style="@style/loginFields"
+        android:layout_width="250dp"
+        android:layout_height="wrap_content"
+        android:layout_marginTop="16dp"
+        android:layout_below="@+id/emailEditText"
+        android:drawableLeft="@drawable/ic_action_pass"
+        android:layout_centerHorizontal="true"
+        android:hint="@string/password"
+        android:inputType="textPassword"/>
+
+    <LinearLayout
+        android:id="@+id/registerLinearLayout"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:orientation="vertical"
+        android:layout_alignParentBottom="true">
+
+        <Button
+            android:id="@+id/registerButton"
+            style="@style/registerLabel"
+            android:layout_width="match_parent"
+            android:layout_height="wrap_content"
+            android:background="@color/colorBackgroundRegister"
+            android:padding="16dp"
+            android:layout_marginTop="16dp"
+            android:text="@string/registerLabel"
+            android:textColor="@color/colorForegroundRegister" />
+    </LinearLayout>
+
+</RelativeLayout>

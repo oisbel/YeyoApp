@@ -8,4 +8,6 @@
     <color name="tiroListItem">#EFEBE9</color>
     <color name="tiroListItemSelected">#FFCC80</color>
     <color name="tiroListItemPressed">#FFB74D</color>
+    <color name="colorBackgroundRegister">#FBC297</color>
+    <color name="colorForegroundRegister">#554D47</color>
 </resources>

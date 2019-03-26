@@ -9,7 +9,8 @@
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:src="@drawable/splash_background"
-        android:scaleType="centerCrop"/>
+        android:scaleType="centerCrop"
+        android:alpha="0.4"/>
 
     <ProgressBar
         android:id="@+id/loading_indicator"
@@ -38,7 +39,6 @@
         app:layout_constraintStart_toStartOf="parent" />
 
     <TextView
-        android:id="@+id/textView2"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginBottom="8dp"
@@ -60,7 +60,7 @@
         android:padding="16dp"
         android:layout_marginBottom="16dp"
         app:layout_constraintBottom_toTopOf="@+id/registerTV"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
     <TextView
         android:id="@+id/registerTV"
@@ -74,6 +74,6 @@
         app:layout_constraintStart_toStartOf="parent"
         app:layout_constraintBottom_toBottomOf="parent"
         android:layout_marginBottom="16dp"
-        android:visibility="visible"/>
+        android:visibility="invisible"/>
 
 </android.support.constraint.ConstraintLayout>
