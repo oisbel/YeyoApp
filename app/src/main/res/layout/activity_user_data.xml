@@ -1,7 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
-<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+<layout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
-    xmlns:tools="http://schemas.android.com/tools"
+    xmlns:tools="http://schemas.android.com/tools">
+<RelativeLayout
     android:layout_width="match_parent"
     android:layout_height="match_parent"
     tools:context=".UserDataActivity">
@@ -51,6 +52,7 @@
                 android:layout_marginTop="8dp"
                 android:layout_marginBottom="8dp"
                 android:layout_marginStart="16dp"
+                android:layout_marginEnd="16dp"
                 style="@style/user_data_fields"
                 android:text="@string/email"/>
             <TextView
@@ -59,7 +61,8 @@
                 android:layout_height="wrap_content"
                 style="@style/email_usa"
                 android:layout_marginTop="8dp"
-                android:text="oisbelsimpv@yahoo.es"
+                android:layout_marginBottom="8dp"
+                android:layout_marginEnd="16dp"
                 android:layout_alignParentRight="true"/>
         </RelativeLayout>
 
@@ -70,6 +73,7 @@
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
             android:layout_marginStart="16dp"
+            android:layout_marginEnd="16dp"
             android:layout_below="@+id/emailUsaRelativeLayout"
             style="@style/user_data_fields"
             android:text="@string/email_usa_explain"/>
@@ -133,3 +137,4 @@
     </RelativeLayout>
 
 </RelativeLayout>
+</layout>
