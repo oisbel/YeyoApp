@@ -52,7 +52,7 @@
         android:layout_marginTop="12dp"
         style="@style/registerFields">
         <EditText
-            android:id="@+id/nombreEditText"
+            android:id="@+id/nombreET"
             style="@style/registerFields"
             android:textColor="@android:color/white"
             android:layout_width="match_parent"
@@ -65,7 +65,7 @@
     </android.support.design.widget.TextInputLayout>
 
     <EditText
-        android:id="@+id/emailEditText"
+        android:id="@+id/emailET"
         style="@style/loginFields"
         android:layout_width="250dp"
         android:layout_height="wrap_content"
@@ -82,11 +82,21 @@
         android:layout_width="250dp"
         android:layout_height="wrap_content"
         android:layout_marginTop="16dp"
-        android:layout_below="@+id/emailEditText"
+        android:layout_below="@+id/emailET"
         android:drawableLeft="@drawable/ic_action_pass"
         android:layout_centerHorizontal="true"
         android:hint="@string/password"
         android:inputType="textPassword"/>
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_height="42dp"
+        android:layout_width="42dp"
+        android:layout_gravity="center"
+        android:layout_above="@+id/registerLinearLayout"
+        android:layout_centerHorizontal="true"
+        android:layout_marginBottom="16dp"
+        android:visibility="invisible" />
 
     <LinearLayout
         android:id="@+id/registerLinearLayout"

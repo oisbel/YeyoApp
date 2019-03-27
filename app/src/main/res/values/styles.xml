@@ -78,7 +78,7 @@
     </style>
 
     <style name="registerLabel">
-        <item name="android:textSize">22sp</item>
+        <item name="android:textSize">20sp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">sans-serif-thin</item>
     </style>

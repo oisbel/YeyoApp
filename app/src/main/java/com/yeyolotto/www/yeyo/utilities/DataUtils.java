@@ -17,8 +17,16 @@ public class DataUtils {
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
             Pattern.compile("^[A-Z0-9._%+-]+@[A-Z0-9.-]+\\.[A-Z]{2,6}$", Pattern.CASE_INSENSITIVE);
 
+    private static final Pattern VALID_NAME_REGEX =
+            Pattern.compile("^[\\p{L} .'-]+$", Pattern.CASE_INSENSITIVE);
+
     public static boolean validateEmail(String email) {
         Matcher matcher = VALID_EMAIL_ADDRESS_REGEX .matcher(email);
+        return matcher.find();
+    }
+
+    public static boolean validateName(String name) {
+        Matcher matcher = VALID_NAME_REGEX .matcher(name);
         return matcher.find();
     }
 
@@ -46,11 +54,31 @@ public class DataUtils {
     }
 
     /**
-     * Guarda los datos de usuarios que se acaban de cambiar en el servidor
+     * Edita los datos de usuarios que se acaban de cambiar en el servidor
+     * @param context
+     * @param jsonData
+     * @param user_id
+     */
+    public static void SaveUserData(Context context, JSONObject jsonData, int user_id){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        try {
+            editor.putInt("id", user_id);
+            editor.putString("nombre", jsonData.getString("nombre"));
+            editor.putString("email", jsonData.getString("email"));
+            editor.putString("password", jsonData.getString("password"));
+            editor.apply();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Edita los datos de usuarios que se acaban de cambiar en el servidor
      * @param context
      * @param jsonData
      */
-    public static void SaveUserData(Context context, JSONObject jsonData){
+    public static void EditUserData(Context context, JSONObject jsonData){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
         try {

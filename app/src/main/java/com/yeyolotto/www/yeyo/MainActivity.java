@@ -12,6 +12,7 @@ public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mBottomNav;
 
+    // Guardar todos los fragment en memoria
     final Fragment homeFragment = new HomeFragment();
     final Fragment toolsFragment = new ToolsFragment();
     final Fragment tirosFragment = new TirosFragment();

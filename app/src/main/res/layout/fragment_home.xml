@@ -17,14 +17,14 @@
         android:background="@color/colorPrimaryDark">
 
         <ImageButton
-            android:id="@+id/searchButton"
+            android:id="@+id/userBT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentLeft="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:background="?android:selectableItemBackgroundBorderless"
-            app:srcCompat="@drawable/ic_action_chat" />
+            app:srcCompat="@drawable/ic_action_user" />
 
         <TextView
             android:layout_width="wrap_content"
@@ -35,7 +35,7 @@
             style="@style/lastDateUpdated"/>
 
         <ImageButton
-            android:id="@+id/logoutButton"
+            android:id="@+id/logoutBT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_alignParentRight="true"
