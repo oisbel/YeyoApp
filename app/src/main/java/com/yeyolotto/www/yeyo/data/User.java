@@ -30,6 +30,8 @@ public class User {
     }
 
     public String getEmail_usa() {
+        if (email_usa.equals(""))
+                return "None";
         return email_usa;
     }
 
