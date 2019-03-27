@@ -61,7 +61,7 @@
             android:ems="10"
             android:gravity="center"
             android:inputType="textPersonName"
-            android:hint="@string/name" />
+            android:hint="@string/full_name" />
     </android.support.design.widget.TextInputLayout>
 
     <EditText

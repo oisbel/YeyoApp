@@ -54,7 +54,7 @@ public class DataUtils {
     }
 
     /**
-     * Edita los datos de usuarios que se acaban de cambiar en el servidor
+     * Guarda los datos de usuario que se acaba de crear en el servidor
      * @param context
      * @param jsonData
      * @param user_id
@@ -74,7 +74,7 @@ public class DataUtils {
     }
 
     /**
-     * Edita los datos de usuarios que se acaban de cambiar en el servidor
+     * Edita los datos de usuario que se acaban de cambiar en el servidor
      * @param context
      * @param jsonData
      */

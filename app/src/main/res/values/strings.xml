@@ -4,7 +4,7 @@
     <string name="lotto">LOTTO</string>
     <string name="registerLabel">CREAR CUENTA</string>
     <string name="loginLabel">INICIAR SESIÓN</string>
-    <string name="last_date_updated">Hoy</string>
+    <string name="last_date_updated">28 de Marzo</string>
     <string name="menu_home">Principal</string>
     <string name="menu_tools">Estadística</string>
     <string name="menu_tiros">Tiros</string>
@@ -17,8 +17,10 @@
     <string name="mediodia">Mediodía</string>
     <string name="noche">Noche</string>
 
-    <string name="name">Nombre y Apellidos</string>
+    <string name="full_name">Nombre y Apellidos</string>
+    <string name="name_label">Nombre</string>
     <string name="email">Correo</string>
+    <string name="email_usa">Correo USA</string>
     <string name="password">Contraseña</string>
 
     <string name="user_exist_message">Un usuario con ese correo ya existe</string>
@@ -27,5 +29,12 @@
     <string name="mandatory_error">Obligatorio</string>
     <string name="invalid_email">Correo Inválido</string>
     <string name="invalid_name">Nombre Inválido</string>
+
+    <string name="settings_label">Mis datos</string>
+    <string name="logout">CERRAR SESIÓN</string>
+    <string name="email_usa_explain">
+        Usaremos este correo en caso de que quiera recibir sus ganancias via Wester Union.
+        Depositaremos sus fondos via Quick Pay en esta dirección de correo.
+    </string>
 
 </resources>

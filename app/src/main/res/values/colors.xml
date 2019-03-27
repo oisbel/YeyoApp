@@ -10,4 +10,6 @@
     <color name="tiroListItemPressed">#FFB74D</color>
     <color name="colorBackgroundRegister">#FBC297</color>
     <color name="colorForegroundRegister">#554D47</color>
+    <color name="backgroundSettings">#EFEEF3</color>
+    <color name="backgroundLogoutButton">#EE7F37</color>
 </resources>
