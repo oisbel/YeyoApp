@@ -1,9 +1,11 @@
 package com.yeyolotto.www.yeyo;
 
+import android.content.Intent;
 import android.databinding.DataBindingUtil;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.View;
+import android.widget.Button;
 import android.widget.ImageButton;
 import android.widget.TextView;
 
@@ -16,6 +18,7 @@ public class UserDataActivity extends AppCompatActivity {
     ImageButton closeBT;
     TextView nameTV;
     User mUser;
+    Button logoutBT;
     ActivityUserDataBinding mBinding;
 
     @Override
@@ -28,6 +31,7 @@ public class UserDataActivity extends AppCompatActivity {
 
         closeBT = findViewById(R.id.closeBT);
         nameTV = findViewById(R.id.nameTV);
+        logoutBT = findViewById(R.id.logoutBT);
 
         mUser = DataUtils.loadUserData(this);
         if(mUser.getId() == -1)
@@ -39,6 +43,13 @@ public class UserDataActivity extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 finish();
+            }
+        });
+        logoutBT.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                Intent intent = new Intent(getApplicationContext(),logoutActivity.class);
+                startActivity(intent);
             }
         });
     }

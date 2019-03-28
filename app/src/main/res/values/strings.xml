@@ -36,5 +36,8 @@
         Usaremos este correo en caso de que quiera recibir sus ganancias via Wester Union.
         Depositaremos sus fondos via Quick Pay en esta dirección de correo.
     </string>
+    <string name="logout_explain">¿Seguro que desea cerrar sesión y volver a introducir el correo y la contraseña?</string>
+    <string name="discard_logout">NO, ¿para qué?</string>
+    <string name="confirm_logout">Si</string>
 
 </resources>

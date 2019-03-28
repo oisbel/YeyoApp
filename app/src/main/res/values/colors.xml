@@ -11,5 +11,8 @@
     <color name="colorBackgroundRegister">#FBC297</color>
     <color name="colorForegroundRegister">#554D47</color>
     <color name="backgroundSettings">#EFEEF3</color>
-    <color name="backgroundLogoutButton">#EE7F37</color>
+    <color name="backgroundLogoutButton">#BE3E23</color>
+    <color name="backgroundLogoutWindow">#BE3E23</color>
+    <color name="discard_logout">#943521</color>
+    <color name="confirm_logout">#7D220F</color>
 </resources>
