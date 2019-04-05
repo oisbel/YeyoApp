@@ -26,6 +26,8 @@
     <string name="user_exist_message">Un usuario con ese correo ya existe</string>
     <string name="user_created">Su cuenta se ha creado satisfactoriamente</string>
     <string name="create_user_error_message">No se ha podido crear al usuario</string>
+    <string name="login_user_error_message">No se ha podido iniciar sesión</string>
+    <string name="invalid_user_credential">Correo o contraseña incorrecta</string>
     <string name="mandatory_error">Obligatorio</string>
     <string name="invalid_email">Correo Inválido</string>
     <string name="invalid_name">Nombre Inválido</string>

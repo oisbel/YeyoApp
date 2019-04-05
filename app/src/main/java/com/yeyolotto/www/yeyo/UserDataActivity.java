@@ -34,8 +34,10 @@ public class UserDataActivity extends AppCompatActivity {
         logoutBT = findViewById(R.id.logoutBT);
 
         mUser = DataUtils.loadUserData(this);
-        if(mUser.getId() == -1)
+        if(mUser == null || mUser.getId() == -1) {
             finish();
+            return;
+        }
 
         displayUserData();
 

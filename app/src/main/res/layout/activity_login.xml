@@ -7,15 +7,58 @@
     android:orientation="vertical"
     tools:context=".RegisterActivity">
 
+    <ImageView
+        android:layout_width="match_parent"
+        android:layout_height="match_parent"
+        android:src="@drawable/splash_background"
+        android:scaleType="centerCrop"
+        android:alpha="0.4"/>
+
+    <RelativeLayout
+        android:id="@+id/topMenu"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        android:layout_alignParentTop="true">
+
+        <ImageButton
+            android:id="@+id/backIB"
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginLeft="16dp"
+            android:layout_marginTop="8dp"
+            android:layout_marginBottom="8dp"
+            android:background="?android:selectableItemBackgroundBorderless"
+            app:srcCompat="@drawable/ic_action_back" />
+
+        <TextView
+            android:layout_width="wrap_content"
+            android:layout_height="wrap_content"
+            android:layout_marginTop="14dp"
+            android:layout_marginBottom="8dp"
+            android:layout_centerHorizontal="true"
+            android:text="@string/loginLabel"
+            style="@style/lastDateUpdated"/>
+
+    </RelativeLayout>
+
+    <ProgressBar
+        android:id="@+id/loadingProgressBar"
+        android:layout_height="42dp"
+        android:layout_width="42dp"
+        android:layout_gravity="center"
+        android:layout_centerHorizontal="true"
+        android:visibility="invisible"
+        android:layout_alignParentBottom="true"/>
+
     <LinearLayout
         android:id="@+id/topLinearLayout"
-        android:layout_width="wrap_content"
+        android:layout_width="match_parent"
         android:layout_height="wrap_content"
         android:orientation="vertical"
         android:gravity="center"
-        android:layout_alignParentTop="true"
         android:layout_centerHorizontal="true"
-        android:layout_marginTop="72dp">
+        android:layout_alignParentBottom="true">
+
         <TextView
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
@@ -27,73 +70,50 @@
             style="@style/lottoSplash"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-
             android:text="@string/lotto"
             android:textSize="14sp" />
-    </LinearLayout>
 
+        <View
+            android:id="@+id/divView"
+            android:layout_width="match_parent"
+            android:layout_marginBottom="16dp"
+            style="@style/divRegister"/>
 
-    <View
-        android:id="@+id/divView"
-        android:layout_width="match_parent"
-        style="@style/divRegister"
-        android:layout_below="@+id/topLinearLayout"/>
-
-    <EditText
-        android:id="@+id/emailEditText"
-        style="@style/loginFields"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_below="@+id/divView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="24dp"
-        android:drawableStart="@drawable/ic_action_user"
-        android:hint="@string/email"
-        android:inputType="textEmailAddress" />
-
-    <EditText
-        android:id="@+id/passwordET"
-        style="@style/loginFields"
-        android:layout_width="250dp"
-        android:layout_height="wrap_content"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/emailEditText"
-        android:drawableStart="@drawable/ic_action_pass"
-        android:layout_centerHorizontal="true"
-        android:hint="@string/password"
-        android:inputType="textPassword"/>
-
-    <android.support.v7.widget.CardView
-        android:id="@+id/registerCardView"
-        android:layout_width="250dp"
-        android:layout_height="48dp"
-        app:cardCornerRadius="25dp"
-        app:cardElevation="10dp"
-        android:layout_gravity="center"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="16dp"
-        android:layout_below="@+id/passwordET"
-        android:clickable="true"
-        app:cardBackgroundColor="@color/colorBackgroundRegister">
-        <Button
-            android:id="@+id/loginButton"
-            android:layout_width="wrap_content"
+        <LinearLayout
+            android:layout_width="match_parent"
             android:layout_height="wrap_content"
-            android:layout_gravity="center"
-            android:text="@string/loginLabel"
-            android:clickable="true"
-            android:background="?android:attr/selectableItemBackground"
-            style="@style/loginButton"/>
-    </android.support.v7.widget.CardView>
+            android:orientation="vertical"
+            android:gravity="center"
+            android:background="@android:color/darker_gray">
 
-    <ProgressBar
-        android:id="@+id/loadingProgressBar"
-        android:layout_height="42dp"
-        android:layout_width="42dp"
-        android:layout_gravity="center"
-        android:layout_below="@+id/registerCardView"
-        android:layout_centerHorizontal="true"
-        android:layout_marginTop="32dp"
-        android:visibility="invisible" />
+            <EditText
+                android:id="@+id/emailET"
+                style="@style/loginFieldsLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:hint="@string/email"
+                android:inputType="textEmailAddress" />
+
+            <EditText
+                android:id="@+id/passwordET"
+                style="@style/loginFieldsLogin"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_marginTop="1dp"
+                android:layout_marginBottom="1dp"
+                android:hint="@string/password"
+                android:inputType="textPassword"/>
+
+            <Button
+                android:id="@+id/loginButton"
+                android:layout_width="match_parent"
+                android:layout_height="wrap_content"
+                android:layout_gravity="center"
+                android:text="@string/loginLabel"
+                android:clickable="true"
+                android:background="@color/colorPrimaryDark"
+                style="@style/loginLabel" />
+        </LinearLayout>
+    </LinearLayout>
 
 </RelativeLayout>

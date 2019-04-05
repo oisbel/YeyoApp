@@ -15,4 +15,5 @@
     <color name="backgroundLogoutWindow">#BE3E23</color>
     <color name="discard_logout">#943521</color>
     <color name="confirm_logout">#7D220F</color>
+    <color name="hintColorLogin">#C8C7CD</color>
 </resources>

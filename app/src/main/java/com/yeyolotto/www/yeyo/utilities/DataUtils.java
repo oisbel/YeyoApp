@@ -35,17 +35,24 @@ public class DataUtils {
      */
     public static User loadUserData(Context context){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        return new User(sharedPreferences.getInt("id",-1),
-                sharedPreferences.getString("nombre",""),
-                sharedPreferences.getString("email",""),
-                sharedPreferences.getString("email_usa",""),
-                sharedPreferences.getString("password",""));
+        if(!sharedPreferences.contains("id"))
+            return null;
+        try {
+            return new User(sharedPreferences.getInt("id", -1),
+                    sharedPreferences.getString("nombre", ""),
+                    sharedPreferences.getString("email", ""),
+                    sharedPreferences.getString("email_usa", ""),
+                    sharedPreferences.getString("password", ""));
+        }catch (Exception e){
+            e.printStackTrace();
+            return null;
+        }
     }
 
     public static void clearUserData(Context context){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putString("id","-1");
+        editor.putInt("id",-1);
         editor.putString("nombre","");
         editor.putString("email","");
         editor.putString("email_usa","");
@@ -66,6 +73,27 @@ public class DataUtils {
             editor.putInt("id", user_id);
             editor.putString("nombre", jsonData.getString("nombre"));
             editor.putString("email", jsonData.getString("email"));
+            editor.putString("email_usa", "");
+            editor.putString("password", jsonData.getString("password"));
+            editor.apply();
+        } catch (JSONException e) {
+            e.printStackTrace();
+        }
+    }
+
+    /**
+     * Guarda los datos de usuario que se acaba de logear en el servidor
+     * @param context
+     * @param jsonData
+     */
+    public static void SaveUserData(Context context, JSONObject jsonData){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        try {
+            editor.putInt("id", jsonData.getInt("id"));
+            editor.putString("nombre", jsonData.getString("nombre"));
+            editor.putString("email", jsonData.getString("email"));
+            editor.putString("email_usa", jsonData.getString("email_usa"));
             editor.putString("password", jsonData.getString("password"));
             editor.apply();
         } catch (JSONException e) {
@@ -81,6 +109,7 @@ public class DataUtils {
     public static void EditUserData(Context context, JSONObject jsonData){
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
         SharedPreferences.Editor editor = sharedPreferences.edit();
+
         try {
             editor.putString("email_usa", jsonData.getString("email_usa"));
             editor.apply();

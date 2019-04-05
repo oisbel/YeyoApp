@@ -111,7 +111,7 @@ public class RegisterActivity extends AppCompatActivity {
      */
     private void SaveUser(int user_id){
         if(userDataJSON != null)
-            DataUtils.SaveUserData(this, userDataJSON,user_id);
+            DataUtils.SaveUserData(this, userDataJSON, user_id);
 
     }
 
