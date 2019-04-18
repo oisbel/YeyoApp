@@ -50,7 +50,7 @@ public class TirosFragment extends Fragment {
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         mTiroList.setLayoutManager(layoutManager);
         mTiroList.setHasFixedSize(true);
-        mTirosAdapter = new TirosAdapter();
+        mTirosAdapter = new TirosAdapter(getContext());
         mTiroList.setAdapter(mTirosAdapter);
 
         /* Once all of our views are setup, we can load the reports data. */
