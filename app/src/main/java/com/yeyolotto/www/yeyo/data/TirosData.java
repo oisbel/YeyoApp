@@ -8,7 +8,7 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa todos los tiros
+ * Representa todos los tiros que se estan mostrando en el recycler view
  */
 public class TirosData {
     private String status;
