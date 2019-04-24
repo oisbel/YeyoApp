@@ -124,6 +124,35 @@ public class DataUtils {
     }
 
     /**
+     * Devuelve la cantidad de tiros que hay almacenados en la tabla tiro de base de datos local
+     * @param context
+     * @return
+     */
+    public static int TiroTableDBGetLength(Context context){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        if(sharedPreferences.contains("tirosLength"))
+            return sharedPreferences.getInt("tirosLength",-1);
+        // No se ha guardado nada, lo inicializo en -1
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("tirosLength", -1);
+        editor.apply();
+        return -1;
+    }
+
+    /**
+     * Guarda el index de la ultima fila insertada en la tabla tiro de la base de datos
+     * (Representa la cantidad de tiros guardados en el base de datos local)
+     * @param context
+     * @param length
+     */
+    public static void TiroTableDBSetLength(Context context, int length){
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
+        SharedPreferences.Editor editor = sharedPreferences.edit();
+        editor.putInt("tirosLength", length);
+        editor.apply();
+    }
+
+    /**
      * Inserta todos los tiros en la base de datos (Se usa solo una ves para hacer una copia local)
      * @param tirosJSONString String en formato JSON con todos los tiros recuperados del web server
      * @param db
