@@ -8,22 +8,19 @@ import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Representa todos los tiros que se estan mostrando en el recycler view
+ * Representa un grupo de tiros recuperados del web server
  */
 public class TirosData {
     private String status;
     private List<Tiro> Tiros;
 
-    public TirosData(String tirosJSONString)
-    {
+    public TirosData(String tirosJSONString) {
         Tiros = new ArrayList<>();
-        try
-        {
+        try {
             JSONObject data = new JSONObject(tirosJSONString);
             JSONObject tiros = data.getJSONObject("Tiros");
             status = tiros.getString("status");
-            if(status.equals("ok"))
-            {
+            if(status.equals("ok")){
                 JSONArray tirosList = tiros.getJSONArray("list");
                 for (int i = 0; i < tirosList.length(); i++)
                 {

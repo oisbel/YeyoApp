@@ -6,6 +6,9 @@ import android.database.sqlite.SQLiteOpenHelper;
 
 import com.yeyolotto.www.yeyo.data.YeyoContract.*;
 
+/**
+ * Se comunica con la base de datos
+ */
 public class YeyoDbHelper extends SQLiteOpenHelper {
 
     private static final String DATABASE_NAME = "yeyo.db";

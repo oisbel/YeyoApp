@@ -8,17 +8,22 @@ import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.view.MenuItem;
 
+import com.yeyolotto.www.yeyo.data.YeyoDbHelper;
+
 public class MainActivity extends AppCompatActivity {
 
     private BottomNavigationView mBottomNav;
 
-    // Guardar todos los fragment en memoria
+    // Para guardar todos los fragment en memoria
     final Fragment homeFragment = new HomeFragment();
     final Fragment toolsFragment = new ToolsFragment();
     final Fragment tirosFragment = new TirosFragment();
     final Fragment playsFragment = new PlaysFragment();
     final FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment activeFragment = homeFragment;
+
+    /** Database helper that will provide us access to the database */
+    private YeyoDbHelper mDbHelper;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -42,6 +47,9 @@ public class MainActivity extends AppCompatActivity {
                 .hide(toolsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container, homeFragment,"1")
                 .commit();
+
+        // To access our database, we instantiate our subclass of SQLiteOpenHelper
+        mDbHelper = new YeyoDbHelper(this);
     }
 
     private void selectFragment(MenuItem item) {

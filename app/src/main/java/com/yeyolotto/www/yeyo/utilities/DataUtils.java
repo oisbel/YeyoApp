@@ -1,11 +1,16 @@
 package com.yeyolotto.www.yeyo.utilities;
 
+import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
+import android.database.sqlite.SQLiteDatabase;
 import android.preference.PreferenceManager;
 
+import com.yeyolotto.www.yeyo.data.Tiro;
 import com.yeyolotto.www.yeyo.data.User;
+import com.yeyolotto.www.yeyo.data.YeyoContract.TiroEntry;
 
+import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
@@ -116,5 +121,52 @@ public class DataUtils {
         } catch (JSONException e) {
             e.printStackTrace();
         }
+    }
+
+    /**
+     * Inserta todos los tiros en la base de datos (Se usa solo una ves para hacer una copia local)
+     * @param tirosJSONString String en formato JSON con todos los tiros recuperados del web server
+     * @param db
+     * @return true si toda la insercion fue satisfactoria
+     */
+    public static boolean InsertAllTirosDB(String tirosJSONString, SQLiteDatabase db){
+        try{
+            JSONObject data = new JSONObject(tirosJSONString);
+            JSONObject tiros = data.getJSONObject("Tiros");
+            String status = tiros.getString("status");
+            if(status.equals("ok")){
+                JSONArray tirosList = tiros.getJSONArray("list");
+                for (int i = 0; i < tirosList.length(); i++)
+                {
+                   if(InsertTiroDB(tirosList.getJSONObject(i), db) < 0){
+                       return false;
+                   }
+                }
+            }
+        }catch (JSONException e){
+            e.printStackTrace();
+            return false;
+        }
+        return true;
+    }
+
+    /**
+     * Inserta los datos de un tiro en una nueva fila en la tabla correspondiente
+     * @param tiro
+     * @param db
+     * @return el numero de fila insertado, -1 si hubo un error
+     */
+    public static long InsertTiroDB(JSONObject tiro, SQLiteDatabase db){
+
+        ContentValues values = new ContentValues();
+        try {
+            values.put(TiroEntry.COLUMN_FECHA, tiro.getString(TiroEntry.COLUMN_FECHA));
+            values.put(TiroEntry.COLUMN_HORA, tiro.getString(TiroEntry.COLUMN_HORA));
+            values.put(TiroEntry.COLUMN_TIRO, tiro.getString(TiroEntry.COLUMN_TIRO));
+        }catch (JSONException e){
+            e.printStackTrace();
+            return -2;
+        }
+        return db.insert(TiroEntry.TABLE_NAME, null, values);
     }
 }

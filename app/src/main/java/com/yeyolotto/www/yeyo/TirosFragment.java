@@ -53,7 +53,7 @@ public class TirosFragment extends Fragment {
         mTirosAdapter = new TirosAdapter(getContext());
         mTiroList.setAdapter(mTirosAdapter);
 
-        /* Once all of our views are setup, we can load the reports data. */
+        /* Once all of our views are setup, we can load the tiros data. */
         makeTirosQuery();
 
         return view;
