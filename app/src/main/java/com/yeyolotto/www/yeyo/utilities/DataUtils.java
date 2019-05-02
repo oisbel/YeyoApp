@@ -4,6 +4,7 @@ import android.content.ContentValues;
 import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
+import android.database.Cursor;
 import android.preference.PreferenceManager;
 
 import com.yeyolotto.www.yeyo.data.Tiro;
@@ -124,32 +125,26 @@ public class DataUtils {
     }
 
     /**
-     * Devuelve la cantidad de tiros que hay almacenados en la tabla tiro de base de datos local
-     * @param context
-     * @return
+     *
+     * @param db
+     * @return cantidad de tiros en la base de datos
      */
-    public static int TiroTableDBGetLength(Context context){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        if(sharedPreferences.contains("tirosLength"))
-            return sharedPreferences.getInt("tirosLength",-1);
-        // No se ha guardado nada, lo inicializo en -1
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("tirosLength", -1);
-        editor.apply();
-        return -1;
-    }
+    public static int getTirosCount(SQLiteDatabase db){
+        Cursor cursor = db.query(
+                TiroEntry.TABLE_NAME,   // The table to query
+                null,           // The columns to return
+                null,           // The columns for the WHERE clause
+                null,        // The values for the WHERE clause
+                null,            // Don't group the rows
+                null,             // Don't filter by row groups
+                null);           // The sort order
 
-    /**
-     * Guarda el index de la ultima fila insertada en la tabla tiro de la base de datos
-     * (Representa la cantidad de tiros guardados en el base de datos local)
-     * @param context
-     * @param length
-     */
-    public static void TiroTableDBSetLength(Context context, int length){
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(context);
-        SharedPreferences.Editor editor = sharedPreferences.edit();
-        editor.putInt("tirosLength", length);
-        editor.apply();
+        int result = cursor.getColumnCount();
+        // Always close the cursor when you're done reading from it. This releases all its
+        // resources and makes it invalid.
+        cursor.close();
+
+        return result;
     }
 
     /**

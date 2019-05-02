@@ -11,11 +11,17 @@ import android.widget.Button;
 import android.widget.ProgressBar;
 import android.widget.TextView;
 
+import com.yeyolotto.www.yeyo.data.YeyoDbHelper;
+
 public class SplashActivity extends AppCompatActivity {
 
     Button loginBT;
     TextView registerTV;
     ProgressBar loadingIndicator;
+
+    /** Database helper that will provide us access to the database */
+    private YeyoDbHelper mDbHelper;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -24,6 +30,9 @@ public class SplashActivity extends AppCompatActivity {
         loginBT = findViewById(R.id.loginBT);
         registerTV = findViewById(R.id.registerTV);
         loadingIndicator = findViewById(R.id.loading_indicator);
+
+        // To access our database, we instantiate our subclass of SQLiteOpenHelper
+        mDbHelper = new YeyoDbHelper(this);
 
         // Check if there is a user registered, load the user email
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
