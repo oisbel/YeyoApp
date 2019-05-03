@@ -27,7 +27,6 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailET;
     EditText passwordET;
     Button loginBT;
-    Boolean loginStatus = false;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -72,12 +71,12 @@ public class LoginActivity extends AppCompatActivity {
         }catch (JSONException e){
             e.printStackTrace();
         }
+    }
 
-        if(loginStatus) {
-            Intent intent = new Intent(getApplicationContext(), MainActivity.class);
-            startActivity(intent);
-            finish();
-        }
+    private void goMainActivity(){
+        Intent intent = new Intent(getApplicationContext(), MainActivity.class);
+        startActivity(intent);
+        finish();
     }
 
     /**
@@ -182,7 +181,7 @@ public class LoginActivity extends AppCompatActivity {
                     }else{
                         // sucess
                         SaveUser(jsonObject);
-                        loginStatus = true;
+                        goMainActivity();
                     }
                 }catch (JSONException e){
                     e.printStackTrace();

@@ -24,11 +24,10 @@ public class YeyoDbHelper extends SQLiteOpenHelper {
     public void onCreate(SQLiteDatabase sqLiteDatabase) {
         // Create a table to hold tiro data
         final String SQL_CREATE_TIRO_TABLE = "CREATE TABLE " + TiroEntry.TABLE_NAME + " (" +
-                TiroEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT," +
+                TiroEntry._ID + " INTEGER PRIMARY KEY AUTOINCREMENT, " +
                 TiroEntry.COLUMN_FECHA + " TEXT NOT NULL, " +
                 TiroEntry.COLUMN_HORA + " TEXT NOT NULL, " +
-                TiroEntry.COLUMN_TIRO + " TEXT NOT NULL, " +
-                "); ";
+                TiroEntry.COLUMN_TIRO + " TEXT NOT NULL);" ;
         sqLiteDatabase.execSQL(SQL_CREATE_TIRO_TABLE);
     }
 

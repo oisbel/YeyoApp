@@ -248,8 +248,8 @@ public class NetworkUtils {
 
     /**
      * Builds the URL used to query yeyolotto para obtenet los ultimos tiros a partir del tiro position
-     *
-     * @return The URL to use to query the yeyolotto get reports.
+     * @param position is the last tiro in the local database
+     * @return
      */
     public static URL buildLastTirosUrl(int position) {
         Uri builtUri = Uri.parse(BASE_LAST_TIROS_URL + "/" + position).buildUpon()

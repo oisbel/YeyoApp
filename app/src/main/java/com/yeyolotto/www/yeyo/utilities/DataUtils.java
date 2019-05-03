@@ -5,6 +5,7 @@ import android.content.Context;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
+import android.database.sqlite.SQLiteException;
 import android.preference.PreferenceManager;
 
 import com.yeyolotto.www.yeyo.data.Tiro;
@@ -130,20 +131,25 @@ public class DataUtils {
      * @return cantidad de tiros en la base de datos
      */
     public static int getTirosCount(SQLiteDatabase db){
-        Cursor cursor = db.query(
-                TiroEntry.TABLE_NAME,   // The table to query
-                null,           // The columns to return
-                null,           // The columns for the WHERE clause
-                null,        // The values for the WHERE clause
-                null,            // Don't group the rows
-                null,             // Don't filter by row groups
-                null);           // The sort order
+        int result = -1;
+        try {
+            Cursor cursor = db.query(
+                    TiroEntry.TABLE_NAME,   // The table to query
+                    null,           // The columns to return
+                    null,           // The columns for the WHERE clause
+                    null,        // The values for the WHERE clause
+                    null,            // Don't group the rows
+                    null,             // Don't filter by row groups
+                    null);           // The sort order
 
-        int result = cursor.getColumnCount();
-        // Always close the cursor when you're done reading from it. This releases all its
-        // resources and makes it invalid.
-        cursor.close();
-
+            result = cursor.getCount();
+            // Always close the cursor when you're done reading from it. This releases all its
+            // resources and makes it invalid.
+            cursor.close();
+        }catch (SQLiteException e) {
+            // database doesn't exist yet.
+            return result;
+        }
         return result;
     }
 
@@ -166,7 +172,7 @@ public class DataUtils {
                        return false;
                    }
                 }
-            }
+            } else return false;
         }catch (JSONException e){
             e.printStackTrace();
             return false;
