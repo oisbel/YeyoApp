@@ -27,6 +27,7 @@ public class LoginActivity extends AppCompatActivity {
     EditText emailET;
     EditText passwordET;
     Button loginBT;
+    String passNoHash; // Para Guardar la clave cuando se logea el usuario yno el hash del pass de viene del server
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -64,6 +65,7 @@ public class LoginActivity extends AppCompatActivity {
     private void makeGetUserQuery(){
         if(!checkEntries()) return;
         JSONObject userDataJSON = new JSONObject();
+        passNoHash = passwordET.getText().toString();
         try{
             userDataJSON.put("email", emailET.getText());
             userDataJSON.put("password", passwordET.getText());
@@ -101,7 +103,7 @@ public class LoginActivity extends AppCompatActivity {
      */
     private void SaveUser(JSONObject userDataJSON){
         if(userDataJSON != null)
-            DataUtils.SaveUserData(this, userDataJSON);
+            DataUtils.SaveUserData(this, userDataJSON, passNoHash);
 
     }
 
