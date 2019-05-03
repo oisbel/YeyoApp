@@ -57,8 +57,8 @@ public class SplashActivity extends AppCompatActivity {
             showLoginRegister();
         } else {
             // there is data from existing user: load last tiros and then go to main activity
-            //makeTirosQuery(user_email, user_password);
-            goToMainActivity();
+            makeTirosQuery(user_email, user_password);
+            //goToMainActivity();
         }
 
         registerTV.setOnClickListener(new View.OnClickListener() {
