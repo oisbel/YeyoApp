@@ -34,6 +34,7 @@ public class SplashActivity extends AppCompatActivity {
 
     /** Database helper that will provide us access to the database */
     private YeyoDbHelper mDbHelper;
+    String user_email, user_password;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -49,8 +50,8 @@ public class SplashActivity extends AppCompatActivity {
 
         // Check if there is a user registered, load the user email
         SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String user_email = sharedPreferences.getString("email","");
-        String user_password = sharedPreferences.getString("password","");
+        user_email = sharedPreferences.getString("email","");
+        user_password = sharedPreferences.getString("password","");
 
         if(user_email.equals("")){
             // No hay nadie registrado o logeado
@@ -85,9 +86,6 @@ public class SplashActivity extends AppCompatActivity {
      * y hide el progress loading bar
      */
     private void showLoginRegister(){
-        // Check if there is a user registered, load the user email
-        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
-        String user_email = sharedPreferences.getString("email","");
         if(user_email.equals("")){
             loginBT.setVisibility(View.VISIBLE);
             registerTV.setVisibility(View.VISIBLE);
@@ -95,6 +93,14 @@ public class SplashActivity extends AppCompatActivity {
         }else
             goToMainActivity();
 
+    }
+
+    private void goToMainActivity(){
+        Intent startChildActivityIntent = new Intent(getApplicationContext(),MainActivity.class);
+        // To let the main activity know that splash is the activity que la llamo
+        startChildActivityIntent.putExtra(Intent.EXTRA_TEXT, "splash");
+        startActivity(startChildActivityIntent);
+        finish();
     }
 
     /**
@@ -114,12 +120,6 @@ public class SplashActivity extends AppCompatActivity {
             e.printStackTrace();
         }
         new TirosQueryTask().execute(dataJSON);
-    }
-
-    private void goToMainActivity(){
-        Intent intent = new Intent(getApplicationContext(),MainActivity.class);
-        startActivity(intent);
-        finish();
     }
 
     /**

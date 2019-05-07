@@ -1,6 +1,9 @@
 package com.yeyolotto.www.yeyo;
 
+import android.content.Intent;
+import android.content.SharedPreferences;
 import android.os.AsyncTask;
+import android.preference.PreferenceManager;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -48,6 +51,23 @@ public class MainActivity extends AppCompatActivity {
             }
         });
 
+        // To access our database, we instantiate our subclass of SQLiteOpenHelper
+        mDbHelper = new YeyoDbHelper(this);
+
+        // Obtener el string pasado de la activity anterior para saber quien me llamó
+        String parentActivity = "login";
+        Intent intentThatStartedThisActivity = getIntent();
+        if(intentThatStartedThisActivity.hasExtra(Intent.EXTRA_TEXT)) {
+            parentActivity = intentThatStartedThisActivity.getStringExtra(Intent.EXTRA_TEXT);
+        }
+        // Load user, email
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String user_email = sharedPreferences.getString("email","");
+        String user_password = sharedPreferences.getString("password","");
+
+        if(parentActivity != "splash" && user_email!="")
+            makeTirosQuery(user_email, user_password);
+
         fragmentManager.beginTransaction().add(R.id.container, playsFragment,"4")
                 .hide(playsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container, tirosFragment,"3")
@@ -56,9 +76,6 @@ public class MainActivity extends AppCompatActivity {
                 .hide(toolsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container, homeFragment,"1")
                 .commit();
-
-        // To access our database, we instantiate our subclass of SQLiteOpenHelper
-        mDbHelper = new YeyoDbHelper(this);
     }
 
     private void selectFragment(MenuItem item) {
@@ -83,7 +100,71 @@ public class MainActivity extends AppCompatActivity {
     }
 
     @Override
-    public void onBackPressed() {
+    public void onBackPressed() {}
 
+    /**
+     * Ejecuta el hilo para descargar los tiros
+     */
+    private void makeTirosQuery(String email, String pass){
+        JSONObject dataJSON = new JSONObject();
+        int position = DataUtils.getTirosCount(mDbHelper.getReadableDatabase());
+        if(position<0){ // algo salio mal con sql
+            return;
+        }
+        try {
+            dataJSON.put("email", email);
+            dataJSON.put("password", pass);
+            dataJSON.put("position", position);
+        }catch (JSONException e){
+            e.printStackTrace();
+        }
+        new TirosQueryTask().execute(dataJSON);
+    }
+
+    /**
+     * Ejecuta el pedido de actualizar los tiros
+     */
+    public class TirosQueryTask extends AsyncTask<JSONObject, Void, String> {
+
+        @Override
+        protected void onPreExecute() {
+            super.onPreExecute();
+        }
+
+        @Override
+        protected String doInBackground(JSONObject... jsonObjects) {
+            if(jsonObjects.length == 0) return null;
+            JSONObject jsonData = jsonObjects[0];
+
+            String username = "";
+            String password = "";
+            int position = 0;
+            try{
+                username = jsonData.getString("email");
+                password = jsonData.getString("password");
+                position = jsonData.getInt("position");
+            }catch (JSONException e){
+                e.printStackTrace();
+            }
+
+            URL tirosUrl = NetworkUtils.buildLastTirosUrl(position);
+            // Para guardar la respuesta string en formato JSON
+            String tirosJSONResult = null;
+            try {
+                tirosJSONResult = NetworkUtils.getLastTirosFromHttpUrl(tirosUrl, username, password);
+            }catch (IOException e){
+                e.printStackTrace();
+                return null;
+            }
+            return tirosJSONResult;
+        }
+
+        @Override
+        protected void onPostExecute(String tirosJSONResult) {
+
+            if(tirosJSONResult != null && tirosJSONResult!=""){
+                DataUtils.InsertAllTirosDB(tirosJSONResult, mDbHelper.getWritableDatabase());
+            }
+        }
     }
 }
