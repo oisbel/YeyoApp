@@ -53,7 +53,7 @@ public class SplashActivity extends AppCompatActivity {
         String user_password = sharedPreferences.getString("password","");
 
         if(user_email.equals("")){
-            // No hay nadie registrado
+            // No hay nadie registrado o logeado
             showLoginRegister();
         } else {
             // there is data from existing user: load last tiros and then go to main activity
@@ -85,9 +85,16 @@ public class SplashActivity extends AppCompatActivity {
      * y hide el progress loading bar
      */
     private void showLoginRegister(){
-        loginBT.setVisibility(View.VISIBLE);
-        registerTV.setVisibility(View.VISIBLE);
-        loadingIndicator.setVisibility(View.INVISIBLE);
+        // Check if there is a user registered, load the user email
+        SharedPreferences sharedPreferences = PreferenceManager.getDefaultSharedPreferences(this);
+        String user_email = sharedPreferences.getString("email","");
+        if(user_email.equals("")){
+            loginBT.setVisibility(View.VISIBLE);
+            registerTV.setVisibility(View.VISIBLE);
+            loadingIndicator.setVisibility(View.INVISIBLE);
+        }else
+            goToMainActivity();
+
     }
 
     /**
@@ -95,10 +102,14 @@ public class SplashActivity extends AppCompatActivity {
      */
     private void makeTirosQuery(String email, String pass){
         JSONObject dataJSON = new JSONObject();
+        int position = DataUtils.getTirosCount(mDbHelper.getReadableDatabase());
+        if(position<0){ // algo salio mal con sql
+            return;
+        }
         try {
             dataJSON.put("email", email);
             dataJSON.put("password", pass);
-            dataJSON.put("position", DataUtils.getTirosCount(mDbHelper.getReadableDatabase()));
+            dataJSON.put("position", position);
         }catch (JSONException e){
             e.printStackTrace();
         }

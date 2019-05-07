@@ -1,5 +1,6 @@
 package com.yeyolotto.www.yeyo;
 
+import android.os.AsyncTask;
 import android.support.annotation.NonNull;
 import android.support.design.widget.BottomNavigationView;
 import android.support.v4.app.Fragment;
@@ -9,6 +10,14 @@ import android.os.Bundle;
 import android.view.MenuItem;
 
 import com.yeyolotto.www.yeyo.data.YeyoDbHelper;
+import com.yeyolotto.www.yeyo.utilities.DataUtils;
+import com.yeyolotto.www.yeyo.utilities.NetworkUtils;
+
+import org.json.JSONException;
+import org.json.JSONObject;
+
+import java.io.IOException;
+import java.net.URL;
 
 public class MainActivity extends AppCompatActivity {
 
@@ -75,12 +84,6 @@ public class MainActivity extends AppCompatActivity {
 
     @Override
     public void onBackPressed() {
-        if(fragmentManager != null && activeFragment != null
-                && homeFragment != null && activeFragment != homeFragment) {
-            fragmentManager.beginTransaction().hide(activeFragment).show(homeFragment).commit();
-            activeFragment = homeFragment;
-        }else
-            super.onBackPressed();
 
     }
 }
