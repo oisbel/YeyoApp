@@ -15,6 +15,7 @@ import android.view.MenuItem;
 import com.yeyolotto.www.yeyo.data.YeyoDbHelper;
 import com.yeyolotto.www.yeyo.utilities.DataUtils;
 import com.yeyolotto.www.yeyo.utilities.NetworkUtils;
+import com.yeyolotto.www.yeyo.utilities.UpdateTirosQueryTask;
 
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -65,6 +66,7 @@ public class MainActivity extends AppCompatActivity {
         String user_email = sharedPreferences.getString("email","");
         String user_password = sharedPreferences.getString("password","");
 
+        // see if was the parent is the splash activity, so I dont have to update the tiros
         if(parentActivity != "splash" && user_email!="")
             makeTirosQuery(user_email, user_password);
 
@@ -106,65 +108,18 @@ public class MainActivity extends AppCompatActivity {
      * Ejecuta el hilo para descargar los tiros
      */
     private void makeTirosQuery(String email, String pass){
-        JSONObject dataJSON = new JSONObject();
+        JSONObject parametersJSON = new JSONObject();
         int position = DataUtils.getTirosCount(mDbHelper.getReadableDatabase());
         if(position<0){ // algo salio mal con sql
             return;
         }
         try {
-            dataJSON.put("email", email);
-            dataJSON.put("password", pass);
-            dataJSON.put("position", position);
+            parametersJSON.put("email", email);
+            parametersJSON.put("password", pass);
+            parametersJSON.put("position", position);
         }catch (JSONException e){
             e.printStackTrace();
         }
-        new TirosQueryTask().execute(dataJSON);
-    }
-
-    /**
-     * Ejecuta el pedido de actualizar los tiros
-     */
-    public class TirosQueryTask extends AsyncTask<JSONObject, Void, String> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-        }
-
-        @Override
-        protected String doInBackground(JSONObject... jsonObjects) {
-            if(jsonObjects.length == 0) return null;
-            JSONObject jsonData = jsonObjects[0];
-
-            String username = "";
-            String password = "";
-            int position = 0;
-            try{
-                username = jsonData.getString("email");
-                password = jsonData.getString("password");
-                position = jsonData.getInt("position");
-            }catch (JSONException e){
-                e.printStackTrace();
-            }
-
-            URL tirosUrl = NetworkUtils.buildLastTirosUrl(position);
-            // Para guardar la respuesta string en formato JSON
-            String tirosJSONResult = null;
-            try {
-                tirosJSONResult = NetworkUtils.getLastTirosFromHttpUrl(tirosUrl, username, password);
-            }catch (IOException e){
-                e.printStackTrace();
-                return null;
-            }
-            return tirosJSONResult;
-        }
-
-        @Override
-        protected void onPostExecute(String tirosJSONResult) {
-
-            if(tirosJSONResult != null && tirosJSONResult!=""){
-                DataUtils.InsertAllTirosDB(tirosJSONResult, mDbHelper.getWritableDatabase());
-            }
-        }
+        new UpdateTirosQueryTask(mDbHelper,parametersJSON).Update();
     }
 }
