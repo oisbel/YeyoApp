@@ -2,12 +2,14 @@ package com.yeyolotto.www.yeyo.utilities;
 
 import android.content.ContentValues;
 import android.content.Context;
+import android.content.Intent;
 import android.content.SharedPreferences;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.preference.PreferenceManager;
 
+import com.yeyolotto.www.yeyo.data.Tiro;
 import com.yeyolotto.www.yeyo.data.User;
 import com.yeyolotto.www.yeyo.data.YeyoContract.TiroEntry;
 
@@ -15,9 +17,14 @@ import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
 
+import java.util.ArrayList;
+import java.util.List;
 import java.util.regex.Matcher;
 import java.util.regex.Pattern;
 
+/**
+ * Util class to manage user data with share preferences and tiros data with sqlite
+ */
 public class DataUtils {
 
     private static final Pattern VALID_EMAIL_ADDRESS_REGEX =
@@ -127,7 +134,7 @@ public class DataUtils {
 
     /**
      *
-     * @param db
+     * @param db Readable Database
      * @return cantidad de tiros en la base de datos
      */
     public static int getTirosCount(SQLiteDatabase db){
@@ -150,6 +157,52 @@ public class DataUtils {
             // database doesn't exist yet.
             return result;
         }
+        return result;
+    }
+
+    /**
+     * Devuelve los ultimos count tiros de la base de datos local
+     * @param count cantidad de tiros a recuperar
+     * @param db Readable Database
+     * @return
+     */
+    public static List<Tiro> GetLastTiros(int count, SQLiteDatabase db){
+        List<Tiro> result = new ArrayList<>();
+        if(db == null)
+            return result;
+
+        Cursor cursor = db.query(
+                TiroEntry.TABLE_NAME,
+                null,
+                null,
+                null,
+                null,
+                null,
+                "id DESC",
+                Integer.toString(count)); // limit
+
+        try {
+            // Figure out the index of each column
+            int idColumnIndex = cursor.getColumnIndex(TiroEntry._ID);
+            int fechaColumnIndex = cursor.getColumnIndex(TiroEntry.COLUMN_FECHA);
+            int horaColumnIndex = cursor.getColumnIndex(TiroEntry.COLUMN_HORA);
+            int tiroColumnIndex = cursor.getColumnIndex(TiroEntry.COLUMN_TIRO);
+
+            while (cursor.moveToNext()) {
+                result.add(
+                        new Tiro(
+                                cursor.getInt(idColumnIndex),
+                                cursor.getString(fechaColumnIndex),
+                                cursor.getString(horaColumnIndex),
+                                cursor.getString(tiroColumnIndex)
+                        ));
+            }
+        }finally {
+            // Always close the cursor when you're done reading from it. This releases all its
+            // resources and makes it invalid.
+            cursor.close();
+        }
+
         return result;
     }
 

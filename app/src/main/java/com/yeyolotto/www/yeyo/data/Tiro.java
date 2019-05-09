@@ -24,6 +24,13 @@ public class Tiro {
         }
     }
 
+    public Tiro(int id, String fecha, String hora, String tiro){
+        this.id = id;
+        this.fecha = fecha;
+        this.hora = hora;
+        this.tiro = tiro;
+    }
+
     public JSONObject getTiroJSON() {
         return tiroJSON;
     }
