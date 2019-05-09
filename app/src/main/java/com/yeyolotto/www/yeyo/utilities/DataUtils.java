@@ -8,7 +8,6 @@ import android.database.Cursor;
 import android.database.sqlite.SQLiteException;
 import android.preference.PreferenceManager;
 
-import com.yeyolotto.www.yeyo.data.Tiro;
 import com.yeyolotto.www.yeyo.data.User;
 import com.yeyolotto.www.yeyo.data.YeyoContract.TiroEntry;
 

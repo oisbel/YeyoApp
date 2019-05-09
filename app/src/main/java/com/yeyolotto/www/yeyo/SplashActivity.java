@@ -163,7 +163,7 @@ public class SplashActivity extends AppCompatActivity {
         @Override
         protected void onPostExecute(String tirosJSONResult) {
 
-            if(tirosJSONResult != null && tirosJSONResult!=""
+            if(tirosJSONResult != null && !tirosJSONResult.isEmpty()
                     && DataUtils.InsertAllTirosDB(tirosJSONResult, mDbHelper.getWritableDatabase())){
                 goToMainActivity();
             }else{

@@ -68,7 +68,7 @@ public class UpdateTirosQueryTask {
         @Override
         protected void onPostExecute(String tirosJSONResult) {
 
-            if(tirosJSONResult != null && tirosJSONResult!=""){
+            if(tirosJSONResult != null && !tirosJSONResult.isEmpty()){
                 DataUtils.InsertAllTirosDB(tirosJSONResult, mDbHelper.getWritableDatabase());
             }
         }
