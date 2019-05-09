@@ -67,7 +67,7 @@ public class MainActivity extends AppCompatActivity {
         String user_password = sharedPreferences.getString("password","");
 
         // see if was the parent is the splash activity, so I dont have to update the tiros
-        if(parentActivity != "splash" && user_email!="")
+        if(!("splash".equals(parentActivity)) && !user_email.isEmpty())
             makeTirosQuery(user_email, user_password);
 
         fragmentManager.beginTransaction().add(R.id.container, playsFragment,"4")
