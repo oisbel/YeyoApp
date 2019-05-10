@@ -178,7 +178,7 @@ public class DataUtils {
                 null,
                 null,
                 null,
-                "id DESC",
+                TiroEntry._ID + " DESC",
                 Integer.toString(count)); // limit
 
         try {

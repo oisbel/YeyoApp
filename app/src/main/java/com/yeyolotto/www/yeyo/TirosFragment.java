@@ -15,6 +15,8 @@ import android.widget.TextView;
 
 import com.yeyolotto.www.yeyo.data.Tiro;
 import com.yeyolotto.www.yeyo.data.TirosData;
+import com.yeyolotto.www.yeyo.data.YeyoDbHelper;
+import com.yeyolotto.www.yeyo.utilities.DataUtils;
 import com.yeyolotto.www.yeyo.utilities.NetworkUtils;
 
 import java.io.IOException;
@@ -30,8 +32,11 @@ public class TirosFragment extends Fragment {
     // Create a ProgressBar variable to store a reference to the ProgressBar
     private ProgressBar mLoadingIndicator;
 
-    // Lista de los tiros
+    // Lista de los tiros a mostrar en el Recycler View
     List<Tiro> mTirosData;
+
+    /** Database helper that will provide us access to the database */
+    private YeyoDbHelper mDbHelper;
 
     public TirosFragment() {
         // Required empty public constructor
@@ -47,6 +52,9 @@ public class TirosFragment extends Fragment {
         mTiroList = view.findViewById(R.id.tirosRecyclerView);
         mLoadingIndicator = view.findViewById(R.id.loadingIndicatorPB);
 
+        // To access our database, we instantiate our subclass of SQLiteOpenHelper
+        mDbHelper = new YeyoDbHelper(getContext());
+
         LinearLayoutManager layoutManager = new LinearLayoutManager(view.getContext());
         mTiroList.setLayoutManager(layoutManager);
         mTiroList.setHasFixedSize(true);
@@ -60,11 +68,21 @@ public class TirosFragment extends Fragment {
     }
 
     /**
-     * Ejecuta el hilo para descargar los tiros
+     * Recupera los ultimos tiros de la base de datos
      */
     private void makeTirosQuery(){
         showTiroRecyclerView();
-        new TirosQueryTask().execute();
+        mLoadingIndicator.setVisibility(View.VISIBLE);
+
+        mTirosData = DataUtils.GetLastTiros(100,mDbHelper.getReadableDatabase());
+        if(mTirosData != null && mTirosData.size()>0) {
+            // Mando los datos al adaptador para que los muestre en el recyclerView
+            mTirosAdapter.setTirosData(mTirosData);
+        }else
+            showErrorMessage();
+
+        // As soon as the loading is complete, hide the loading indicator
+        mLoadingIndicator.setVisibility(View.INVISIBLE);
     }
 
     // Helper methods
@@ -80,56 +98,5 @@ public class TirosFragment extends Fragment {
         mTiroList.setVisibility(View.INVISIBLE);
         // Then, show the error
         mErrorMessageDisplay.setVisibility(View.VISIBLE);
-    }
-
-    /**
-     * Ejecuta el pedido de obtener los tiros
-     */
-    public class TirosQueryTask extends AsyncTask<Void, Void, List<Tiro>> {
-
-        @Override
-        protected void onPreExecute() {
-            super.onPreExecute();
-            mLoadingIndicator.setVisibility(View.VISIBLE);
-        }
-
-        @Override
-        protected List<Tiro> doInBackground(Void... voids) {
-            URL tirosUrl = NetworkUtils.buildTirosUrl();
-            // Para guardar la respuesta string en formato JSON
-            String tirosJSONResult = null;
-            try {
-                tirosJSONResult = NetworkUtils.getTirosFromHttpUrl(tirosUrl);
-            }catch (IOException e){
-                e.printStackTrace();
-                return null;
-            }
-            TirosData tirosData = null;
-            try {
-                tirosData= new TirosData(tirosJSONResult);
-            }catch (Exception e){
-                e.printStackTrace();
-            }
-            if(tirosData!=null) {
-                return tirosData.getTiros();
-            }
-            return null;
-        }
-
-        @Override
-        protected void onPostExecute(List<Tiro> tirosDataResult) {
-            // As soon as the loading is complete, hide the loading indicator
-            mLoadingIndicator.setVisibility(View.INVISIBLE);
-
-            if(tirosDataResult != null && tirosDataResult.size() > 0){
-                showTiroRecyclerView();
-                // Guardo la referecia de la lista de tiros
-                mTirosData = tirosDataResult;
-                // Mando los datos al adaptador para que los muestre en el recyclerView
-                mTirosAdapter.setTirosData(mTirosData);
-            }else{
-                showErrorMessage();
-            }
-        }
     }
 }
