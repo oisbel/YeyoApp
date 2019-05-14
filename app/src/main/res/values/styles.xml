@@ -1,3 +1,4 @@
+<?xml version="1.0" encoding="utf-8"?>
 <resources>
 
     <!-- Base application theme. -->
@@ -59,14 +60,8 @@
         <item name="android:fontFamily">sans-serif-smallcaps</item>
     </style>
 
-    <style name="lastTirosLabel">
+    <style name="mainLabelFragments">
         <item name="android:textSize">20dp</item>
-        <item name="android:textColor">@android:color/white</item>
-        <item name="android:fontFamily">sans-serif-light</item>
-    </style>
-
-    <style name="lastDateUpdated">
-        <item name="android:textSize">18dp</item>
         <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">sans-serif-smallcaps</item>
     </style>

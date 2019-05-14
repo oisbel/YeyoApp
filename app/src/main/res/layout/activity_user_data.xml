@@ -30,7 +30,7 @@
             android:layout_marginTop="12dp"
             android:layout_marginBottom="8dp"
             android:text="@string/settings_label"
-            style="@style/lastDateUpdated"/>
+            style="@style/mainLabelFragments"/>
 
     </LinearLayout>
 
