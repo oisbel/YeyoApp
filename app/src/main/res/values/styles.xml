@@ -11,8 +11,15 @@
 
     <style name="Pick3Pick4Label">
         <item name="android:textSize">18dp</item>
-        <item name="android:textColor">@color/colorPrimary</item>
+        <item name="android:textColor">@android:color/white</item>
         <item name="android:fontFamily">sans-serif-thin</item>
+    </style>
+
+    <style name="loading">
+        <item name="android:textSize">14sp</item>
+        <item name="android:textColor">@android:color/white</item>
+        <item name="android:fontFamily">sans-serif-thin</item>
+        <item name="android:background">@color/loading</item>
     </style>
 
     <style name="DivStyle">

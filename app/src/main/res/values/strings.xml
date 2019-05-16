@@ -4,11 +4,14 @@
     <string name="lotto">LOTTO</string>
     <string name="registerLabel">CREAR CUENTA</string>
     <string name="loginLabel">INICIAR SESIÓN</string>
-    <string name="last_date_updated">28 de Marzo</string>
+    <string name="last_date_updated">Fecha del último tiro</string>
     <string name="menu_home">Principal</string>
     <string name="menu_tools">Estadística</string>
     <string name="menu_tiros">Tiros</string>
     <string name="menu_plays">Jugadas</string>
+
+    <string name="loading">Actualizando</string>
+    <string name="loadingError">Error Actualizando</string>
 
     <string name="last_tiros">Últimos Tiros</string>
     <string name="pick3_pick4">Pick 3 - Pick 4</string>3
@@ -35,8 +38,10 @@
     <string name="settings_label">Mis datos</string>
     <string name="logout">CERRAR SESIÓN</string>
     <string name="email_usa_explain">
-        Usaremos este correo en caso de que quiera recibir sus ganancias via Wester Union.
-        Depositaremos sus fondos via Quick Pay en esta dirección de correo.
+        Usaremos este correo para cuando quiera recibir sus ganancias.
+        Depositaremos sus fondos en minutos via Quick Pay en esta dirección de correo.
+        El propietario de esa cuenta de correo le puede enviar el dinero
+        via Wester Union o alguna otra forma de preferencia.
     </string>
     <string name="logout_explain">¿Seguro que desea cerrar sesión y volver a introducir el correo y la contraseña?</string>
     <string name="discard_logout">NO, ¿para qué?</string>

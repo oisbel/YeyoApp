@@ -21,7 +21,7 @@
             android:id="@+id/userBT"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
-            android:layout_alignParentLeft="true"
+            android:layout_alignParentStart="true"
             android:layout_marginLeft="16dp"
             android:layout_marginTop="8dp"
             android:layout_marginBottom="8dp"
@@ -29,6 +29,7 @@
             app:srcCompat="@drawable/ic_action_user" />
 
         <TextView
+            android:id="@+id/lastDateUpdatedTV"
             android:layout_width="wrap_content"
             android:layout_height="wrap_content"
             android:layout_centerInParent="true"
@@ -39,5 +40,70 @@
             style="@style/mainLabelFragments"/>
 
     </RelativeLayout>
+
+    <TextView
+        android:id="@+id/loadingTV"
+        android:layout_width="match_parent"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/topMenu"
+        android:gravity="center"
+        android:visibility="invisible"
+        android:text="@string/loading"
+        style="@style/loading"/>
+
+    <TextView
+        android:id="@+id/Pick3Pick4TV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:text="@string/pick3_pick4"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        style="@style/Pick3Pick4Label"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/loadingTV"/>
+
+    <ImageView
+        android:id="@+id/occasionIV"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginBottom="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="4dp"
+        android:contentDescription="@string/pick3_pick4"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pick3Pick4TV"
+        app:srcCompat="@drawable/ic_action_day_today" />
+
+    <TextView
+        android:id="@+id/numberTV"
+        style="@style/tiroNumberToday"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_marginEnd="8dp"
+        android:layout_marginStart="8dp"
+        android:layout_marginTop="12dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/Pick3Pick4TV"/>
+
+    <TextView
+        android:id="@+id/dateTV"
+        style="@style/tiroDateToday"
+        android:layout_marginTop="8dp"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        app:layout_constraintTop_toBottomOf="@+id/numberTV"
+        app:layout_constraintStart_toStartOf="@id/numberTV"
+        app:layout_constraintEnd_toEndOf="@+id/numberTV" />
+
+    <View
+        android:id="@+id/divView"
+        style="@style/DivStyle"
+        android:layout_marginTop="8dp"
+        android:layout_marginBottom="8dp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/dateTV"/>
 
 </android.support.constraint.ConstraintLayout>

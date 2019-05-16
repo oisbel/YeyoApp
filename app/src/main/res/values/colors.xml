@@ -16,4 +16,6 @@
     <color name="discard_logout">#943521</color>
     <color name="confirm_logout">#7D220F</color>
     <color name="hintColorLogin">#C8C7CD</color>
+    <color name="loading">#999933</color>
+    <color name="loadingError">#d92626</color>
 </resources>
