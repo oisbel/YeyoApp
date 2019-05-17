@@ -18,4 +18,5 @@
     <color name="hintColorLogin">#C8C7CD</color>
     <color name="loading">#999933</color>
     <color name="loadingError">#d92626</color>
+    <color name="redWine">#4b0708</color>
 </resources>
