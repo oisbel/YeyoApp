@@ -68,9 +68,26 @@ public class TirosFragment extends Fragment {
     }
 
     /**
+     * Para cuando actualice la base de datos en homefragment se actualice aqui
+     * @param hidden
+     */
+    @Override
+    public void onHiddenChanged(boolean hidden) {
+        super.onHiddenChanged(hidden);
+        if (!hidden) {
+            mTirosData = DataUtils.GetLastTiros(100,mDbHelper.getReadableDatabase());
+            if(mTirosData != null && mTirosData.size()>0) {
+                // Mando los datos al adaptador para que los muestre en el recyclerView
+                mTirosAdapter.setTirosData(mTirosData);
+            }else
+                showErrorMessage();
+        }
+    }
+
+    /**
      * Recupera los ultimos tiros de la base de datos
      */
-    private void makeTirosQuery(){
+    public void makeTirosQuery(){
         showTiroRecyclerView();
         mLoadingIndicator.setVisibility(View.VISIBLE);
 

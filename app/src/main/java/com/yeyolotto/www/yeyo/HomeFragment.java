@@ -7,6 +7,7 @@ import android.os.AsyncTask;
 import android.os.Bundle;
 import android.preference.PreferenceManager;
 import android.support.v4.app.Fragment;
+import android.support.v4.app.FragmentManager;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -50,7 +51,6 @@ public class HomeFragment extends Fragment {
     public HomeFragment() {
         // Required empty public constructor
     }
-
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -157,6 +157,11 @@ public class HomeFragment extends Fragment {
         loadingTV.setVisibility(View.INVISIBLE);
     }
 
+    private void UpdateTirosFragment(){
+
+
+    }
+
     /**
      * Ejecuta el pedido de actualizar los tiros
      */
@@ -203,6 +208,7 @@ public class HomeFragment extends Fragment {
                 setLastTiro();
             }
             hideLoadingMessage();
+            UpdateTirosFragment();
         }
     }
 

@@ -35,6 +35,7 @@ public class MainActivity extends AppCompatActivity {
     final FragmentManager fragmentManager = getSupportFragmentManager();
     Fragment activeFragment = homeFragment;
 
+
     /** Database helper that will provide us access to the database */
     private YeyoDbHelper mDbHelper;
 
@@ -78,6 +79,7 @@ public class MainActivity extends AppCompatActivity {
                 .hide(toolsFragment).commit();
         fragmentManager.beginTransaction().add(R.id.container, homeFragment,"1")
                 .commit();
+
     }
 
     private void selectFragment(MenuItem item) {
